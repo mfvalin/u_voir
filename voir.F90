@@ -27,12 +27,13 @@
       character * 8 cles(ncle)
       character * 12 status
       character * 128 val(ncle), def(ncle)
-      character(len=*), parameter :: &
-      include 'version.inc'
+      character(len=8) :: VOIR_VERSION
       data cles / 'IMENT:','SEQ','STYLE','MOREHELP','V' /
-      data def / '/dev/null','SEQ' ,'NINJNK+DATEV+LEVEL+IP1+GRIDINFO','MOREHELP',VOIR_VERSION/
+      data def / '/dev/null','SEQ' ,'NINJNK+DATEV+LEVEL+IP1+GRIDINFO','MOREHELP','Unknown'/
       data val / '/dev/null','RND' ,'NINJNK+DATEO+IP1+IG1234',2*' '/
 
+      include 'version.inc'
+      def(ncle) = VOIR_VERSION
       call c_init_appl_var_table()
       ipos = -1
       call ccard (cles,def,val,ncle,ipos)
